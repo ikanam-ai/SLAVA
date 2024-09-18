@@ -15,6 +15,6 @@ SLAVA — это набор инструментов для оценки эти�
 Для установки SLAVA, используйте следующие команды:
 
 ```bash
-git clone https://github.com/yourusername/slava.git
+git clone https://github.com/ikanam-ai/slava.git
 cd slava
 pip install -r requirements.txt
