@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "slava"
+version = "0.1.0"
+description = ""
+authors = ["Rinat Sharafetdinov <rinat.sharafetdinov42@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.2"
+fuzzywuzzy = "^0.18.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
