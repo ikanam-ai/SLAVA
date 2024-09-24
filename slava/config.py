@@ -1,5 +1,6 @@
 import re
 import string
+from typing import Final
 
 # FILL THIS
 DATA_EXPERIMENT_FOLDER: str = "qwen_temp"
@@ -33,3 +34,9 @@ NOT_OPEN_QUESTION_VALUES_FOR_PIVOT_TABLES: list[str] = [
     "is_substring",
     "partially_match",
 ]
+
+# DataLoader
+REPO_ID: Final[str] = "RANEPA-ai/SLAVA-OpenData-2800-v1"
+REPO_TYPE: Final[str] = "dataset"
+
+OPEN_DATASET_FILENAME: Final[str] = "open_questions_data.json"

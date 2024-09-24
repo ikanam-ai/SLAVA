@@ -9,7 +9,7 @@ import warnings
 import pandas as pd
 from fuzzywuzzy import fuzz
 
-from config import *
+from slava.config import *
 
 warnings.filterwarnings("ignore")
 
