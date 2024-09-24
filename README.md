@@ -8,18 +8,15 @@ SLAVA is a benchmark designed to evaluate the factual accuracy of large language
 
 Our scientific article about the [SLAVA](extensions/docs/SLAVA.pdf?)
 
-## Testing models on our open data
+## Testing models on our open data (DRAFT)
 
+Here are instructions for generating predictions of a model from the SLAVE leaderboard on our open data.
 
+1. Get an open dataset from our hugging face page
 
+2. Generate your model's responses in the "response" column
 
-
-
-
-
-
-
-
+3. Save the data to a table and upload it to our model validation module
 
 ## Code structure of the framework
 ```
