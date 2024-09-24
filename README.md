@@ -1,20 +1,8 @@
-# SLAVA: Этический Бенчмарк для Проверки LLM
+# SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis
 
-## Описание
+SLAVA is a benchmark designed to evaluate the factual accuracy of large language models (LLMs) specifically within the Russian domain. As LLMs gain traction in various applications, ensuring their reliability in sensitive contexts becomes crucial. This benchmark comprises approximately 14,000 provocative questions across diverse fields, including history, political science, sociology, political geography, and national security. Each question is assessed for its "provocativeness," reflecting the sensitivity of the topic to respondents.
 
-SLAVA — это набор инструментов для оценки этических аспектов работы языковых моделей (LLM). Мы стремимся обеспечить разработчиков и исследователей эффективными методами для проверки и улучшения этических стандартов в их моделях.
+Our scientific article about the [SLAVA](extensions/SLAVA.pdf?)
 
-## Цели
+## Testing models on our open data
 
-- Оценка языковых моделей на предмет предвзятости и неприемлемого контента.
-- Предоставление метрик для оценки этичности генерации текста.
-- Создание базы данных для анализа и улучшения моделей.
-
-## Установка
-
-Для установки SLAVA, используйте следующие команды:
-
-```bash
-git clone https://github.com/ikanam-ai/slava.git
-cd slava
-pip install -r requirements.txt
