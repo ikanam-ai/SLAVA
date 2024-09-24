@@ -7,9 +7,8 @@ import string
 import warnings
 
 import pandas as pd
-from fuzzywuzzy import fuzz
-
 from config import *
+from fuzzywuzzy import fuzz
 
 warnings.filterwarnings("ignore")
 
