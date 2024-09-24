@@ -7,8 +7,9 @@ import string
 import warnings
 
 import pandas as pd
-from slava.config import *
 from fuzzywuzzy import fuzz
+
+from slava.config import *
 
 warnings.filterwarnings("ignore")
 
