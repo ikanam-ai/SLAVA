@@ -14,7 +14,7 @@ Here are instructions for generating predictions of a model from the SLAVE leade
 
 1. Get an open dataset from our hugging face page
 
-2. Generate your model's responses in the "response" column
+2. Generate your model's responses in the "response" column (Look at [notebook](slava/notebooks/validate.ipynb)) 
 
 3. Save the data to a table and upload it to our model validation module
 
