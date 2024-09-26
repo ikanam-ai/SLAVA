@@ -6,15 +6,13 @@
 
 SLAVA is a benchmark designed to evaluate the factual accuracy of large language models (LLMs) specifically within the Russian domain. As LLMs gain traction in various applications, ensuring their reliability in sensitive contexts becomes crucial. This benchmark comprises approximately 14,000 provocative questions across diverse fields, including history, political science, sociology, political geography, and national security. Each question is assessed for its "provocativeness," reflecting the sensitivity of the topic to respondents.
 
-Our scientific article about the [SLAVA](extensions/docs/SLAVA.pdf?)
-
 ## Testing models on our open data (DRAFT)
 
 Here are instructions for generating predictions of a model from the SLAVE leaderboard on our open data.
 
 1. Get an open dataset from our hugging face page
 
-2. Generate your model's responses in the "response" column (Look at [notebook](slava/notebooks/validate.ipynb)) 
+2. Generate your model's responses in the "response" column
 
 3. Save the data to a table and upload it to our model validation module
 
@@ -24,7 +22,6 @@ Here are instructions for generating predictions of a model from the SLAVE leade
 ├── README.md          <- README for developers using this framework.
 │
 ├── extensions
-│   ├── docs           <- Documents and scientific articles
 │   └── views          <- Images and graphic objects
 │
 ├── .gitignore         <- The .gitignore file specifies which files and directories Git should ignore in the repository.
