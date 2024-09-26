@@ -61,7 +61,7 @@ class ModelEval:
             output_file (str): The path to the output CSV file where results will be saved.
         """
         for id, row in tqdm(dataset.iterrows(), total=dataset.shape[0]):
-            if id == 2:
+            if id == 1:
                 break
             prompt = self.fill_instruction(row)
             response = model_handler.generate_response(prompt)
