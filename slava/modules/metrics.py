@@ -22,9 +22,7 @@ def read_file(file_path: str) -> pd.DataFrame:
     elif file_extension == "xlsx":
         return pd.read_excel(file_path)
     else:
-        raise ValueError(
-            "Unsupported file extension. Please provide a '.csv' or '.xlsx' file."
-        )
+        raise ValueError("Unsupported file extension. Please provide a '.csv' or '.xlsx' file.")
 
 
 def only_numbers(raw_text: str) -> str:
@@ -92,9 +90,7 @@ def is_substring(
     real_answer_column: str = "Ответ",
     model_answer_column: str = "response",
 ) -> pd.DataFrame:
-    data["is_substring"] = data.apply(
-        lambda row: row[real_answer_column] in row[model_answer_column], axis=1
-    )
+    data["is_substring"] = data.apply(lambda row: row[real_answer_column] in row[model_answer_column], axis=1)
 
     return data
 
@@ -215,9 +211,7 @@ def get_metrics_open_question(open_question: pd.DataFrame) -> None:
 
     open_question["levenshtein_ratio"] = open_question.apply(levenshtein_ratio, axis=1)
 
-    open_question["f1"] = open_question.apply(
-        lambda row: compute_f1(row["Ответ"], row["response"]), axis=1
-    )
+    open_question["f1"] = open_question.apply(lambda row: compute_f1(row["Ответ"], row["response"]), axis=1)
 
     return open_question
 
@@ -230,9 +224,7 @@ def get_metrics_not_open_question(
 
     not_open_question = is_substring(not_open_question)
 
-    not_open_question[model_answer_column] = not_open_question[
-        model_answer_column
-    ].apply(only_numbers)
+    not_open_question[model_answer_column] = not_open_question[model_answer_column].apply(only_numbers)
 
     not_open_question = partially_match(not_open_question)
 
@@ -248,16 +240,12 @@ def create_and_save_pivot_table(
     aggfunc: str = "mean",
     metrics_naming: str = "Метрика",
 ) -> None:
-    pivot_table = pd.pivot_table(
-        data, index=index_column, columns=columns, values=values, aggfunc=aggfunc
-    )
+    pivot_table = pd.pivot_table(data, index=index_column, columns=columns, values=values, aggfunc=aggfunc)
 
     pivot_table = pivot_table.swaplevel(axis=1).sort_index(axis=1)
     pivot_table.columns.names = [columns, metrics_naming]
 
-    pivot_table.to_csv(
-        f"{EXPERIMENT_FOLDER}/{EXPERIMENT_NAME}_{type_of_data}_pivot_table_by_{columns}.csv"
-    )
+    pivot_table.to_csv(f"{EXPERIMENT_FOLDER}/{EXPERIMENT_NAME}_{type_of_data}_pivot_table_by_{columns}.csv")
 
 
 def run() -> None:

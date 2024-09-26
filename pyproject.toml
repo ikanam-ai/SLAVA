@@ -15,6 +15,7 @@ langchain = "^0.3.0"
 langchain-huggingface = "^0.1.0"
 langchain-ollama = "^0.2.0"
 langchain-community = "^0.3.0"
+openpyxl = "^3.1.5"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.8.0"
@@ -24,3 +25,10 @@ ipykernel = "^6.29.5"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
