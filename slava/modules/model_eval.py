@@ -1,100 +1,76 @@
+import logging
+
 import pandas as pd
 from tqdm import tqdm
+
+from slava.config import (
+    INPUTS_COLUMN,
+    INSTRUCTION_COLUMN,
+    OPTION_SUBCOLUM_TEMPLATE,
+    OPTIONS_COLUMNS,
+    PROMPT_INSTRUCTION,
+    RESULTS_FILEPATH,
+    TASK_COLUMN,
+    TEXT_COLUMN,
+)
+from slava.modules.model_handler import ModelHandler
 
 
 class ModelEval:
     """A class to evaluate models using a data loader and a model handler."""
 
-    def __init__(self, model_handler, data_loader):
-        """
-        Initializes the ModelEval.
+    def __init__(
+        self,
+    ):
+        self.results = []
 
-        Args:
-            model_handler: An instance of a model handler for generating responses.
-            data_loader: An instance of a data loader for loading data.
-        """
-        self.model_handler = model_handler
-        self.data_loader = data_loader
-
-    def fill_instruction(self, row: pd.Series) -> str:
-        """Fills the instruction template with values from the given row.
-
-        Args:
-            row (pd.Series): A row from the test data.
-
-        Returns:
-            str: The filled instruction string.
-        """
-        instruction_template = row["instruction"]  # Ensure the column name is correct
-
-        # Create a dictionary of values for substitution
+    @staticmethod
+    def _extract_values(row: pd.Series):
         values = {
-            "task": row["inputs"].get("task", ""),  # Use get for safe access
-            "text": row["inputs"].get("text", ""),
-            "Option_1": row["inputs"]["options"].get("option_1", ""),
-            "Option_2": row["inputs"]["options"].get("option_2", ""),
-            "Option_3": row["inputs"]["options"].get("option_3", ""),
-            "Option_4": row["inputs"]["options"].get("option_4", ""),
-            "Option_5": row["inputs"]["options"].get("option_5", ""),
-            "Option_6": row["inputs"]["options"].get("option_6", ""),
-            "Option_7": row["inputs"]["options"].get("option_7", ""),
-            "Option_8": row["inputs"]["options"].get("option_8", ""),
-            "Option_9": row["inputs"]["options"].get("option_9", ""),
+            TASK_COLUMN: row[INPUTS_COLUMN].get(TASK_COLUMN, ""),
+            TEXT_COLUMN: row[INPUTS_COLUMN].get(TEXT_COLUMN, ""),
         }
 
-        # Remove NaN or empty values from the dictionary
+        for i in range(1, 10):
+            option_key = OPTION_SUBCOLUM_TEMPLATE.format(i)
+            values[f"Option_{i}"] = row[INPUTS_COLUMN][OPTIONS_COLUMNS].get(option_key, "")
+
         values = {k: v for k, v in values.items() if pd.notna(v) and v != ""}
 
-        # Fill the template
+        return values
+
+    def fill_instruction(self, row: pd.Series, prompt_instruction: str = PROMPT_INSTRUCTION) -> str:
+        instruction_template = row[INSTRUCTION_COLUMN]
+
+        values = self._extract_values(row)
+
         try:
-            filled_instruction = (
-                instruction_template.format(**values)
-                + "\nСАМОЕ ВАЖНОЕ: Отвечай максимально кратко используя только цифры если они даны или слова в задачах с открытым ответом.\nОтвет: "
-            )
+            filled_instruction = instruction_template.format(**values) + prompt_instruction
         except KeyError as e:
-            print(f"Ошибка подстановки: отсутствует ключ {e}")
-            filled_instruction = (
-                "Ошибка: отсутствует необходимая информация для формирования запроса."
-            )
+            logging.info(f"Ошибка подстановки: отсутствует ключ {e}")
+            filled_instruction = "Ошибка: отсутствует необходимая информация для формирования запроса."
 
         return filled_instruction
 
-    def run_evaluation(self, output_file: str) -> None:
+    def run_evaluation(self, dataset: pd.DataFrame, model_handler: ModelHandler, results_filepath: str = RESULTS_FILEPATH) -> None:
         """Runs the evaluation and saves results to a file.
 
         Args:
             output_file (str): The path to the output CSV file where results will be saved.
         """
-        # Load test data
-        test_data = self.data_loader.load_data()
-
-        # Create a list to save results
-        results = []
-
-        # Generate predictions for each question
-        for index, row in tqdm(test_data.iterrows(), total=test_data.shape[0]):
-            # Fill the prompt using the function
+        for id, row in tqdm(dataset.iterrows(), total=dataset.shape[0]):
+            if id == 2:
+                break
             prompt = self.fill_instruction(row)
-            response = self.model_handler.generate_response(prompt)
-            results.append(
+            response = model_handler.generate_response(prompt)
+            self.results.append(
                 {
+                    "id": id,
                     "input": prompt,
                     "response": response.strip(),
                     "output": row["outputs"],
                 }
             )
 
-        # Save results in a DataFrame
-        results_df = pd.DataFrame(results)
-
-        # Save results to a file
-        results_df.to_csv(output_file, index=False, encoding="utf-8")
-        print(f"Results saved to {output_file}")
-
-
-# Usage example (uncomment below to use)
-# if __name__ == "__main__":
-#     model_handler = ...  # Your model handler instance
-#     data_loader = ...  # Your data loader instance
-#     evaluator = ModelEval(model_handler, data_loader)
-#     evaluator.run_evaluation("output.csv")
+        pd.DataFrame(self.results).to_csv(results_filepath, index=False, encoding="utf-8")
+        logging.info(f"Results saved to {results_filepath}")
