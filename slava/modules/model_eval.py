@@ -52,7 +52,9 @@ class ModelEval:
 
         return filled_instruction
 
-    def run_evaluation(self, dataset: pd.DataFrame, model_handler: ModelHandler, results_filepath: str = RESULTS_FILEPATH) -> None:
+    def run_evaluation(
+        self, dataset: pd.DataFrame, model_handler: ModelHandler, results_filepath: str = RESULTS_FILEPATH
+    ) -> None:
         """Runs the evaluation and saves results to a file.
 
         Args:
