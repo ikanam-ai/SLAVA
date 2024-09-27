@@ -6,15 +6,31 @@
 
 SLAVA is a benchmark designed to evaluate the factual accuracy of large language models (LLMs) specifically within the Russian domain. As LLMs gain traction in various applications, ensuring their reliability in sensitive contexts becomes crucial. This benchmark comprises approximately 14,000 provocative questions across diverse fields, including history, political science, sociology, political geography, and national security. Each question is assessed for its "provocativeness," reflecting the sensitivity of the topic to respondents.
 
-## Testing models on our open data (DRAFT)
+## Installation
 
-Here are instructions for generating predictions of a model from the SLAVE leaderboard on our open data.
+1. Clone this repository into a folder that is convenient for you (example: slava)
 
-1. Get an open dataset from our hugging face page
+2. Install [Poetry](https://python-poetry.org/) for comfortable work with dependencies
 
-2. Generate your model's responses in the "response" column
+3. Go to the project directory:
 
-3. Save the data to a table and upload it to our model validation module
+   ```
+   cd slava
+   ```
+
+4. Install dependencies using Poetry
+
+   ```
+   poetry install
+   ```
+
+5. Launch the shell: To work in a virtual environment, use:
+
+   ```
+   poetry shell
+   ```
+
+6. To see how the modules of the SLAVS framework work, go to the folder with [notebooks](slava/notebooks)
 
 ## Code structure of the framework
 ```
