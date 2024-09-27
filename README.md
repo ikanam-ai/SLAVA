@@ -1,6 +1,6 @@
-<div align="center">
+<!-- <div align="center">
   <a href="https://huggingface.co/spaces/RANEPA-ai/SLAVA"><img src="extensions/views/logo.jpg" alt="SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis"></a>
-</div align="center">
+</div align="center"> -->
 
 # SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis
 
