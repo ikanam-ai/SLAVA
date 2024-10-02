@@ -6,7 +6,7 @@ from tqdm import tqdm
 
 from slava.config import (
     INSTRUCTION_COLUMN,
-    MODEL_OUTPUT_COLUMN,
+    MODEL_ANSWER_COLUMN,
     YANDEXGPT_MAXTOKENS,
     YANDEXGPT_MODEL_URI,
     YANDEXGPT_STREAM,
@@ -44,5 +44,5 @@ class YandexGPTModel:
             res_list.append(result)
 
             time.sleep(0.75)
-        dataset[MODEL_OUTPUT_COLUMN] = res_list
+        dataset[MODEL_ANSWER_COLUMN] = res_list
         return dataset

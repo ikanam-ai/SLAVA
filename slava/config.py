@@ -1,48 +1,47 @@
-import re
-import string
 from typing import Final
 
-# FILL THIS
-DATA_EXPERIMENT_FOLDER: str = "qwen_temp"
-EXPERIMENT_NAME: str = "qwen_temp"
-# FILL THIS
-
-REGEX = re.compile("[%s]" % re.escape(string.punctuation + "\\n"))
-
-ALL_EXPERIMENTS_FOLDER: str = "experiments"
-EXPERIMENT_FOLDER: str = f"{ALL_EXPERIMENTS_FOLDER}/{DATA_EXPERIMENT_FOLDER}"
-FILE_NAME: str = f"preprocessed/{DATA_EXPERIMENT_FOLDER}/preprocessed_{EXPERIMENT_NAME}.csv"
-
-OPEN_QUESTION_TYPE_OF_DATA: str = "open_question"
-NOT_OPEN_QUESTION_TYPE_OF_DATA: str = "not_open_question"
-
-COLUMNS_FOR_PIVOT_TABLES: list[str] = [
-    "Вид вопроса",
-    "Предмет",
-    "Провокационность оценка LLM 3 класса",
-]
-
-OPEN_QUESTION_VALUES_FOR_PIVOT_TABLES: list[str] = [
-    "exact_match",
-    "levenshtein_ratio",
-    "f1",
-]
-NOT_OPEN_QUESTION_VALUES_FOR_PIVOT_TABLES: list[str] = [
-    "exact_match",
-    "is_substring",
-    "partially_match",
-]
-
-MODEL_OUTPUT_COLUMN: Final[str] = "response"
-
+# Model eval
 INPUTS_COLUMN: Final[str] = "inputs"
-
 TASK_COLUMN: Final[str] = "task"
 TEXT_COLUMN: Final[str] = "text"
-
 INSTRUCTION_COLUMN: Final[str] = "instruction"
 OPTIONS_COLUMNS: Final[str] = "options"
 OPTION_SUBCOLUM_TEMPLATE: Final[str] = "option_{}"
+
+# Metrics
+OPEN_QUESTION_FLAG_COLUMN: Final[str] = "open_question_flag"
+ONLY_NUMBERS_MODEL_ANSWER_COLUMN: Final[str] = "only_numbers_response"
+
+OPEN_QUESTION_VALUE: Final[str] = "открытый ответ"
+SINGLE_CHOICE: Final[str] = "выбор ответа (один)"
+MULTI_CHOICE: Final[str] = "выбор ответа (мультивыбор)"
+MATCHING: Final[str] = "установление соответствия"
+SEQUENCE: Final[str] = "указание последовательности"
+
+EXACT_MATCH_COLUMN: Final[str] = "exact_match"
+LEVENSHTEIN_RATIO_COLUMN: Final[str] = "levenshtein_ratio"
+F1_SCORE_COLUMN: Final[str] = "f1_score"
+IS_SUBSTRING_COLUMN: Final[str] = "is_substring"
+PARTIALLY_MATCH_COLUMN: Final[str] = "partially_match"
+
+# Pivot tables
+OPEN_QUESTION_VALUES_FOR_PIVOT_TABLES: Final[list[str]] = [
+    EXACT_MATCH_COLUMN,
+    LEVENSHTEIN_RATIO_COLUMN,
+    F1_SCORE_COLUMN,
+]
+NOT_OPEN_QUESTION_VALUES_FOR_PIVOT_TABLES: Final[list[str]] = [
+    EXACT_MATCH_COLUMN,
+    IS_SUBSTRING_COLUMN,
+    PARTIALLY_MATCH_COLUMN,
+]
+
+INDEX_COLUMN: Final = "model"
+TYPE_OF_QUESTION_COLUMN: Final = "Вид вопроса"
+SUBJECT_COLUMN: Final = "Предмет"
+PROVOCATIVE_SCORE_COLUMN: Final = "Провокационность оценка LLM 3 класса"
+REAL_ANSWER_COLUMN: Final[str] = "Ответ"
+MODEL_ANSWER_COLUMN: Final[str] = "response"
 
 # DataLoader
 REPO_ID: Final[str] = "RANEPA-ai/SLAVA-OpenData-2800-v1"
