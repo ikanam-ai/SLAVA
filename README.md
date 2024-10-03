@@ -61,3 +61,28 @@ We hope that our research will draw attention to this issue and stimulate the de
     │   ├── __init__.py
     │   └── metrics.py          <- Сode for getting metrics for the selected experiment
 ```
+
+
+## Licensing Information
+
+#### ⚖ MIT license
+
+## Citation Information
+
+
+```
+@misc{SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis,
+  author = {A. S. Chetvergov, 
+R. S. Sharafetdinov, 
+M. M. Polukoshko, 
+V. A. Akhmetov, 
+N. A. Oruzheynikova, 
+E. S. Anichkov, 
+S. V. Bolovtsov,
+I. S. Alekseevskaya},
+  title = {SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis (2024)},
+  year = {2024},
+  publisher = {Hugging Face},
+  howpublished = "\url{https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1}"
+}
+```
