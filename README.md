@@ -40,26 +40,41 @@ We hope that our research will draw attention to this issue and stimulate the de
 
 ## Code structure of the framework
 ```
-├── LICENSE            <- Open-source license
-├── README.md          <- README for developers using this framework.
-│
-├── extensions
-│   └── views          <- Images and graphic objects
-│
-├── .gitignore         <- The .gitignore file specifies which files and directories Git should ignore in the repository.
-│
-├── poetry.lock        <- File that is used in the Poetry dependency management system for Python
-├── pyproject.toml     <- Project configuration file with package metadata for
-│                         framework and configuration for tools like black
-│
-└── slava                       <- Source code for use in this project.
-    ├── __init__.py
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
+.
+├── README.md - Project description and usage
+├── .gitignore - Ignored files for Git
+├── LICENSE - Project licensing terms
+├── poetry.lock - Fixed dependency versions
+├── pyproject.toml - Project configuration file
+└── slava
+    ├── __init__.py 
+    ├── config.py - Configuration settings
+    ├── models
+    │   ├── __init__.py 
+    │   ├── gigachat.py - Gigachat API wrapper
+    │   ├── huggingface.py - Hugging Face API wrapper
+    │   ├── ollama.py - Ollama API wrapper
+    │   ├── openai.py - OpenAI API wrapper
+    │   └── yandexgpt.py - Yandex GPT API wrapper
     ├── modules
     │   ├── __init__.py
-    │   └── metrics.py          <- Сode for getting metrics for the selected experiment
+    │   ├── utils - Utility functions.
+    │   │   ├── __init__.py
+    │   │   ├── class_metrics.py - Metric calculations
+    │   │   └── metrics_utils.py - Metric utilities
+    │   ├── data_loader.py - Data loading functionality
+    │   ├── leaderboard.py - Leaderboard management
+    │   ├── metrics.py - Performance metrics
+    │   ├── model_eval.py - Model evaluation methods
+    │   └── model_handler.py - Model interaction handler
+    └── notebooks
+        ├── __init__.py
+        ├── example_data - Sample data directory
+        │   └── example.csv - Example of model output
+        ├── data_loader.ipynb - Data loader example
+        ├── metrics.ipynb - Metrics calculation example
+        ├── model_eval.ipynb - Model evaluation example
+        └── model_handler.ipynb - Model handler example
 ```
 
 
