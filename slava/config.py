@@ -29,7 +29,6 @@ TASK_COLUMN: Final[str] = "task"
 TEXT_COLUMN: Final[str] = "text"
 OPTIONS_COLUMN: Final[str] = "options"
 OPTION_SUBCOLUMN_TEMPLATE: Final[str] = "option_{}"
-REAL_ANSWER_COLUMN: Final[str] = "outputs"
 META_COLUMN: Final[str] = "meta"
 ID_COLUMN: Final[str] = "id"
 SUBJECT_COLUMN: Final[str] = "subject"
@@ -46,6 +45,7 @@ REQUIRED_COLUMNS: Final[list[str]] = ["instruction", "inputs", "outputs", "meta"
 
 # Metrics
 MODEL_COLUMN: Final = "model"
+REAL_ANSWER_COLUMN: Final[str] = "outputs"
 MODEL_ANSWER_COLUMN: Final[str] = "response"
 
 OPEN_QUESTION_FLAG_COLUMN: Final[str] = "open_question_flag"

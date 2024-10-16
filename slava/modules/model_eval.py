@@ -4,14 +4,22 @@ import pandas as pd
 from tqdm import tqdm
 
 from slava.config import (
+    ID_COLUMN,
     INPUTS_COLUMN,
     INSTRUCTION_COLUMN,
+    META_COLUMN,
+    MODEL_ANSWER_COLUMN,
+    MODEL_COLUMN,
     OPTION_SUBCOLUMN_TEMPLATE,
     OPTIONS_COLUMN,
     PROMPT_INSTRUCTION,
+    PROVOC_SCORE_COLUMN,
+    REAL_ANSWER_COLUMN,
     RESULTS_FILEPATH,
+    SUBJECT_COLUMN,
     TASK_COLUMN,
     TEXT_COLUMN,
+    TYPE_COLUMN,
 )
 from slava.modules.model_handler import ModelHandler
 
@@ -53,6 +61,7 @@ class ModelEval:
 
     def run_evaluation(
         self,
+        model_name: str,
         dataset: pd.DataFrame,
         model_handler: ModelHandler,
         results_filepath: str = RESULTS_FILEPATH,
@@ -62,10 +71,14 @@ class ModelEval:
             response = model_handler.generate_response(prompt)
             self.results.append(
                 {
-                    "id": row["id"],
-                    "input": prompt,
-                    "response": response.strip(),
-                    "output": row["outputs"],
+                    ID_COLUMN: row[ID_COLUMN],
+                    MODEL_COLUMN: model_name,
+                    SUBJECT_COLUMN: row[META_COLUMN][SUBJECT_COLUMN],
+                    TYPE_COLUMN: row[META_COLUMN][TYPE_COLUMN],
+                    PROVOC_SCORE_COLUMN: row[META_COLUMN][PROVOC_SCORE_COLUMN],
+                    INPUTS_COLUMN: prompt,
+                    MODEL_ANSWER_COLUMN: response.strip(),
+                    REAL_ANSWER_COLUMN: row[REAL_ANSWER_COLUMN],
                 }
             )
 
