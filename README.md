@@ -12,6 +12,9 @@ To address this gap, we developed the SLAVA benchmark, which comprises approxima
 
 We hope that our research will draw attention to this issue and stimulate the development of new factual benchmarks. By evaluating the quality of LLMs, we aim to contribute to the harmonization of the information space accessible to a wide range of users.
 
+## Contacts for cooperation
+If you have any questions, suggestions or are interested in cooperation, do not hesitate to contact us by email slava.ranepa@ya.ru
+
 ## Installation
 
 1. Clone this repository into a folder that is convenient for you (example: slava)
@@ -91,10 +94,10 @@ We hope that our research will draw attention to this issue and stimulate the de
 R. S. Sharafetdinov, 
 M. M. Polukoshko, 
 V. A. Akhmetov, 
-N. A. Oruzheynikova, 
+N. A. Oruzheynikova,
+I. S. Alekseevskaya,
 E. S. Anichkov, 
-S. V. Bolovtsov,
-I. S. Alekseevskaya},
+S. V. Bolovtsov},
   title = {SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis (2024)},
   year = {2024},
   publisher = {Hugging Face},
