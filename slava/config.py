@@ -106,7 +106,7 @@ OPENAI_MODEL_TEMPERATURE: Final[float] = 1.0
 
 # YandexGPTModel
 YANDEXGPT_URL: Final[str] = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
-YANDEXGPT_MODEL_URI: Final[str] = "gpt://b1ggnkibfbsvf7qdohnd/yandexgpt"
+YANDEXGPT_MODEL_URI: Final[str] = "gpt://{}/yandexgpt"
 YANDEXGPT_STREAM: Final[bool] = False
 YANDEXGPT_TEMPERATURE: Final[float] = 0.0
 YANDEXGPT_MAXTOKENS: Final[str] = "200"

@@ -16,7 +16,8 @@ from slava.config import (
 
 
 class YandexGPTModel:
-    def __init__(self, api_key: str = None, temperature: float = YANDEXGPT_TEMPERATURE):
+    def __init__(self, uri: str = None, api_key: str = None, temperature: float = YANDEXGPT_TEMPERATURE):
+        self.uri = uri
         self.url = YANDEXGPT_URL
         self.headers = {
             "Content-Type": "application/json",
@@ -26,7 +27,7 @@ class YandexGPTModel:
 
     def get_response(self, prompt: str = None):
         completion_options = {
-            "modelUri": YANDEXGPT_MODEL_URI,
+            "modelUri": YANDEXGPT_MODEL_URI.format(self.uri),
             "completionOptions": {
                 "stream": YANDEXGPT_STREAM,
                 "temperature": self.temperature,
