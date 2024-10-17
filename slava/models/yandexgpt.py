@@ -42,7 +42,6 @@ class YandexGPTModel:
         for instruction in tqdm(dataset[INSTRUCTION_COLUMN]):
             result = self.get_response(instruction)
             res_list.append(result)
-
             time.sleep(0.75)
         dataset[MODEL_ANSWER_COLUMN] = res_list
         return dataset

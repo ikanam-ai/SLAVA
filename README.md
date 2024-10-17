@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1"><img src="extensions/views/logo.png" alt="SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis"></a>
+  <a href="https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1"><img src="extensions/views/logo_eng.png" alt="SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis"></a>
 </div align="center">
 
 # SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis
@@ -11,6 +11,9 @@ Large Language Models (LLMs) are increasingly applied across various fields due 
 To address this gap, we developed the SLAVA benchmark, which comprises approximately 14,000 sensitive questions relevant to the Russian domain across various fields of knowledge. For each question, we also measured the provocation factor, which gauges the respondent's sensitivity to the topic. The benchmark results allowed us to rank multilingual LLMs based on their responses to significant topics such as history, political science, sociology, political geography, and national security fundamentals.
 
 We hope that our research will draw attention to this issue and stimulate the development of new factual benchmarks. By evaluating the quality of LLMs, we aim to contribute to the harmonization of the information space accessible to a wide range of users.
+
+## Contacts for cooperation
+If you have any questions, suggestions or are interested in cooperation, do not hesitate to contact us by email slava.ranepa@ya.ru
 
 ## Installation
 
@@ -91,10 +94,10 @@ We hope that our research will draw attention to this issue and stimulate the de
 R. S. Sharafetdinov, 
 M. M. Polukoshko, 
 V. A. Akhmetov, 
-N. A. Oruzheynikova, 
+N. A. Oruzheynikova,
+I. S. Alekseevskaya,
 E. S. Anichkov, 
-S. V. Bolovtsov,
-I. S. Alekseevskaya},
+S. V. Bolovtsov},
   title = {SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis (2024)},
   year = {2024},
   publisher = {Hugging Face},

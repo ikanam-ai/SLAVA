@@ -4,7 +4,18 @@ import string
 
 import pandas as pd
 
-from slava.config import *
+from slava.config import (
+    MATCHING,
+    MODEL_ANSWER_COLUMN,
+    MULTI_CHOICE,
+    ONLY_NUMBERS_MODEL_ANSWER_COLUMN,
+    OPEN_QUESTION_FLAG_COLUMN,
+    OPEN_QUESTION_VALUE,
+    REAL_ANSWER_COLUMN,
+    SEQUENCE,
+    SINGLE_CHOICE,
+    TYPE_COLUMN,
+)
 
 # Utils
 REGEX = re.compile("[%s]" % re.escape(string.punctuation + "\\n"))
@@ -14,7 +25,7 @@ def preprocess_answers(data: pd.DataFrame):
     data[REAL_ANSWER_COLUMN] = data[REAL_ANSWER_COLUMN].astype(str).str.lower().str.strip()
     data[MODEL_ANSWER_COLUMN] = data[MODEL_ANSWER_COLUMN].astype(str).str.lower().str.strip()
 
-    data[OPEN_QUESTION_FLAG_COLUMN] = (data[TYPE_OF_QUESTION_COLUMN] == OPEN_QUESTION_VALUE).astype(int)
+    data[OPEN_QUESTION_FLAG_COLUMN] = (data[TYPE_COLUMN] == OPEN_QUESTION_VALUE).astype(int)
 
     open_questions = data[data[OPEN_QUESTION_FLAG_COLUMN] == 1].reset_index(drop=True)
     not_open_questions = data[data[OPEN_QUESTION_FLAG_COLUMN] == 0].reset_index(drop=True)
@@ -83,7 +94,7 @@ def get_match_function(question_type: str):
     }
 
     if question_type not in match_functions:
-        raise ValueError("Неизвестный тип вопроса")
+        raise ValueError("Unknown type of question")
 
     return match_functions[question_type]
 
@@ -92,7 +103,7 @@ def calculate_pm(
     row: pd.Series,
 ) -> float:
 
-    question_type = row[TYPE_OF_QUESTION_COLUMN]
+    question_type = row[TYPE_COLUMN]
     answer = row[REAL_ANSWER_COLUMN]
     only_numbers_model_answer = row[ONLY_NUMBERS_MODEL_ANSWER_COLUMN]
 

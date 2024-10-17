@@ -4,20 +4,27 @@ import pandas as pd
 from tqdm import tqdm
 
 from slava.config import (
+    ID_COLUMN,
     INPUTS_COLUMN,
     INSTRUCTION_COLUMN,
-    OPTION_SUBCOLUM_TEMPLATE,
-    OPTIONS_COLUMNS,
+    META_COLUMN,
+    MODEL_ANSWER_COLUMN,
+    MODEL_COLUMN,
+    OPTION_SUBCOLUMN_TEMPLATE,
+    OPTIONS_COLUMN,
     PROMPT_INSTRUCTION,
+    PROVOC_SCORE_COLUMN,
+    REAL_ANSWER_COLUMN,
     RESULTS_FILEPATH,
+    SUBJECT_COLUMN,
     TASK_COLUMN,
     TEXT_COLUMN,
+    TYPE_COLUMN,
 )
 from slava.modules.model_handler import ModelHandler
 
 
 class ModelEval:
-    """A class to evaluate models using a data loader and a model handler."""
 
     def __init__(
         self,
@@ -32,8 +39,8 @@ class ModelEval:
         }
 
         for i in range(1, 10):
-            option_key = OPTION_SUBCOLUM_TEMPLATE.format(i)
-            values[f"Option_{i}"] = row[INPUTS_COLUMN][OPTIONS_COLUMNS].get(option_key, "")
+            option_key = OPTION_SUBCOLUMN_TEMPLATE.format(i)
+            values[f"Option_{i}"] = row[INPUTS_COLUMN][OPTIONS_COLUMN].get(option_key, "")
 
         values = {k: v for k, v in values.items() if pd.notna(v) and v != ""}
 
@@ -47,30 +54,31 @@ class ModelEval:
         try:
             filled_instruction = instruction_template.format(**values) + prompt_instruction
         except KeyError as e:
-            logging.info(f"Ошибка подстановки: отсутствует ключ {e}")
+            logging.info(f"Substitution error: missing key {e}")
             filled_instruction = "Ошибка: отсутствует необходимая информация для формирования запроса."
 
         return filled_instruction
 
     def run_evaluation(
-        self, dataset: pd.DataFrame, model_handler: ModelHandler, results_filepath: str = RESULTS_FILEPATH
+        self,
+        model_name: str,
+        dataset: pd.DataFrame,
+        model_handler: ModelHandler,
+        results_filepath: str = RESULTS_FILEPATH,
     ) -> None:
-        """Runs the evaluation and saves results to a file.
-
-        Args:
-            output_file (str): The path to the output CSV file where results will be saved.
-        """
-        for id, row in tqdm(dataset.iterrows(), total=dataset.shape[0]):
-            if id == 1:
-                break
+        for _, row in tqdm(dataset.iterrows(), total=dataset.shape[0]):
             prompt = self.fill_instruction(row)
             response = model_handler.generate_response(prompt)
             self.results.append(
                 {
-                    "id": id,
-                    "input": prompt,
-                    "response": response.strip(),
-                    "output": row["outputs"],
+                    ID_COLUMN: row[ID_COLUMN],
+                    MODEL_COLUMN: model_name,
+                    SUBJECT_COLUMN: row[META_COLUMN][SUBJECT_COLUMN],
+                    TYPE_COLUMN: row[META_COLUMN][TYPE_COLUMN],
+                    PROVOC_SCORE_COLUMN: row[META_COLUMN][PROVOC_SCORE_COLUMN],
+                    INPUTS_COLUMN: prompt,
+                    MODEL_ANSWER_COLUMN: response.strip(),
+                    REAL_ANSWER_COLUMN: row[REAL_ANSWER_COLUMN],
                 }
             )
 
