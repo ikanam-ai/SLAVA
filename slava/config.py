@@ -23,6 +23,7 @@ QUESTIONS_DATASET_COLUMNS: Final[list[str]] = [
     "provoc_score",  # The provocation score associated with the question, often used for evaluation.
 ]
 
+# Columns
 INSTRUCTION_COLUMN: Final[str] = "instruction"
 INPUTS_COLUMN: Final[str] = "inputs"
 TASK_COLUMN: Final[str] = "task"
@@ -36,12 +37,6 @@ TYPE_COLUMN: Final[str] = "type"
 SOURCE_COLUMN: Final[str] = "source"
 COMMENT_COLUMN: Final[str] = "comment"
 PROVOC_SCORE_COLUMN: Final[str] = "provoc_score"
-
-# DataLoader
-REPO_ID: Final[str] = "RANEPA-ai/SLAVA-OpenData-2800-v1"
-REPO_TYPE: Final[str] = "dataset"
-OPEN_DATASET_FILENAME: Final[str] = "open_questions_dataset.jsonl"
-REQUIRED_COLUMNS: Final[list[str]] = ["instruction", "inputs", "outputs", "meta"]
 
 # Metrics
 MODEL_COLUMN: Final = "model"
@@ -66,7 +61,54 @@ F1_SCORE_COLUMN: Final[str] = "f1_score"
 IS_SUBSTRING_COLUMN: Final[str] = "is_substring"
 PARTIALLY_MATCH_COLUMN: Final[str] = "partially_match"
 
+QUESTION_TYPES_NAMING = {OPEN_QUESTION_TYPE_NAME: "Open", NOT_OPEN_QUESTION_TYPE_NAME: "Not open"}
+
+LEADERBOARD_SHEET_NAME = "Leaderboard"
+TYPE_OF_QUESTION_SHEET_NAME = "Type of question"
+SUBJECT_SHEET_NAME = "Subject"
+PROVOCATIVENESS_SHEET_NAME = "Provocativeness"
+
+KEYS_NAMING = {
+    TYPE_COLUMN: TYPE_OF_QUESTION_SHEET_NAME,
+    SUBJECT_COLUMN: SUBJECT_SHEET_NAME,
+    PROVOC_SCORE_COLUMN: PROVOCATIVENESS_SHEET_NAME,
+}
+
+SUBJECTS_NAMING = {
+    "Обществознание": "Social studies",
+    "История": "History",
+    "География": "Geography",
+    "Политология": "Political science",
+}
+
+QUESTION_VALUES_NAMING = {
+    OPEN_QUESTION_VALUE: "Open answer",
+    SINGLE_CHOICE: "Single choice",
+    MULTI_CHOICE: "Multiple choice",
+    MATCHING: "Matching",
+    SEQUENCE: "Sequence",
+}
+
+PROVOCATIVENESS_NAMING = {"1": "Low", "2": "Medium", "3": "High"}
+
+COMBINED_VALUES_NAMING = {**SUBJECTS_NAMING, **QUESTION_VALUES_NAMING, **PROVOCATIVENESS_NAMING}
+
+METRICS_NAMING = {
+    EXACT_MATCH_COLUMN: "EM",
+    LEVENSHTEIN_RATIO_COLUMN: "LR",
+    F1_SCORE_COLUMN: "F1",
+    IS_SUBSTRING_COLUMN: "IS",
+    PARTIALLY_MATCH_COLUMN: "PM",
+}
+
 AGGFUNC: Final[str] = "mean"
+
+# DataLoader
+REPO_ID: Final[str] = "RANEPA-ai/SLAVA-OpenData-2800-v1"
+REPO_TYPE: Final[str] = "dataset"
+OPEN_DATASET_FILENAME: Final[str] = "open_questions_dataset.jsonl"
+REQUIRED_COLUMNS: Final[list[str]] = [INSTRUCTION_COLUMN, INPUTS_COLUMN, REAL_ANSWER_COLUMN, META_COLUMN]
+
 # Pivot tables
 OPEN_QUESTION_VALUES_FOR_PIVOT_TABLES: Final[list[str]] = [
     EXACT_MATCH_COLUMN,
@@ -116,4 +158,3 @@ PROMPT_INSTRUCTION: Final[str] = (
     "\nСАМОЕ ВАЖНОЕ: Отвечай максимально кратко используя только цифры если они даны или слова в задачах с открытым ответом.\nОтвет: "
 )
 RESULTS_FILEPATH: Final[str] = "results.csv"
-RESULTS_COLUMNS: Final[list[str]] = ["id", "input", "response", "output"]

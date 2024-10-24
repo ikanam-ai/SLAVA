@@ -79,7 +79,7 @@ def create_pivot_table(
     )
 
     combined_pivot.columns = [
-        f"{questions_type}_{category}_{metric}_{level}" for category, level, metric in combined_pivot.columns
+        f"{questions_type}-{category}-{metric}-{level}" for category, level, metric in combined_pivot.columns
     ]
 
     return combined_pivot.reset_index()
