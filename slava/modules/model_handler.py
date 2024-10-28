@@ -1,4 +1,4 @@
-from langchain_core.messages import HumanMessage
+from langchain_core.prompts import PromptTemplate
 
 
 class ModelHandler:
@@ -7,5 +7,9 @@ class ModelHandler:
         self.model_class = model_class
 
     def generate_response(self, prompt: str) -> str:
-        response = self.model_class.model.invoke([HumanMessage(content=prompt)])
+        template = PromptTemplate.from_template("{prompt}")
+        chain = template | self.model_class.model.bind(skip_prompt=True)
+        response = chain.invoke({"prompt": prompt})
         return response
+
+
