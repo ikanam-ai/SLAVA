@@ -8,10 +8,11 @@ class HuggingFaceModel:
         max_tokens: int = HUGGINGFACE_MODEL_MAX_TOKENS,
         top_k: int = HUGGINGFACE_MODEL_TOP_K,
         temperature: float = HUGGINGFACE_MODEL_TEMPERATURE,
+        device: int = 0 
     ):
         self.model = HuggingFacePipeline.from_model_id(
             model_id=model_name,
-            device=0,
+            device= device,
             task="text-generation",
             pipeline_kwargs={
                 "max_new_tokens": max_tokens,
