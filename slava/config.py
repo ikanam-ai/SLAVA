@@ -125,9 +125,12 @@ NOT_OPEN_QUESTION_VALUES_FOR_PIVOT_TABLES: Final[list[str]] = [
 MODELS_TYPES: Final[tuple[str]] = ["gigachat", "huggingface", "ollama", "openai", "yandexgpt"]
 DEVICE: Final[int] = 0
 
-# Claude
+# ClaudeModel
 CLAUDE_MODEL_NAME: Final[str] = "claude-3-5-sonnet-20240620"
 CLAUDE_MODEL_MAX_TOKENS: Final[int] = 150
+
+# GeminiModel
+GEMINI_MODEL_NAME: Final[str] = "gemini-1.5-flash"
 
 # GigaChatModel
 GIGACHAT_MODEL_SCOPE: Final[str] = "GIGACHAT_API_PERS"
@@ -144,7 +147,9 @@ OLLAMA_MODEL_TOP_K: Final[int] = 50
 OLLAMA_MODEL_MAX_TOKENS: Final[int] = 100
 
 # OpenAIModel
-OPENAI_MODEL_TEMPERATURE: Final[float] = 1.0
+OPENAI_MODEL_NAME: Final[str] = "gpt-4o"
+OPENAI_MODEL_MAX_TOKENS: Final[int] = 150
+OPENAI_MODEL_TEMPERATURE: Final[float] = 0.7
 
 # YandexGPTModel
 YANDEXGPT_URL: Final[str] = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
