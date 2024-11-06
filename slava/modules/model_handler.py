@@ -11,5 +11,3 @@ class ModelHandler:
         chain = template | self.model_class.model.bind(skip_prompt=True)
         response = chain.invoke({"prompt": prompt})
         return response
-
-

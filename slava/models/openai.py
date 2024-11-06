@@ -1,7 +1,10 @@
-from openai import OpenAI
 from langchain_core.messages import HumanMessage
+from openai import OpenAI
 
-class ChatGPTModel:
+from slava.config import OPENAI_MODEL_MAX_TOKENS, OPENAI_MODEL_NAME, OPENAI_MODEL_TEMPERATURE
+
+
+class OpenAIModel:
     def __init__(self, api_key: str):
         self.client = OpenAI(api_key=api_key)
         self.model = self.Model(self.client)
@@ -15,14 +18,14 @@ class ChatGPTModel:
                 openai_messages = [{"role": "system", "content": "You are a helpful assistant."}]
                 for message in messages:
                     openai_messages.append({"role": "user", "content": message.content})
-                
+
                 completion = self.client.chat.completions.create(
-                    model="gpt-4o",
+                    model=OPENAI_MODEL_NAME,
                     messages=openai_messages,
-                    # max_tokens=150,
-                    temperature=0.7
+                    max_tokens=OPENAI_MODEL_MAX_TOKENS,
+                    temperature=OPENAI_MODEL_TEMPERATURE,
                 )
 
                 return completion.choices[0].message.content.strip()
             except Exception as e:
-                return "Ошибка при генерации ответа."
+                return "Error when generating the response by the model."
