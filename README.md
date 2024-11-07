@@ -8,12 +8,12 @@
 
 Large Language Models (LLMs) are increasingly applied across various fields due to their advancing capabilities in numerous natural language processing tasks. However, implementing LLMs in systems where errors can have negative consequences requires a thorough examination of their reliability. Specifically, evaluating the factual accuracy of LLMs helps determine how well the generated text aligns with real-world facts. Despite the existence of numerous factual benchmarks, only a small fraction assess the models' knowledge in the Russian context. Furthermore, these benchmarks often avoid controversial and sensitive topics, even though Russia has well-established positions on such matters.
 
-To address this gap, we developed the SLAVA benchmark, which comprises approximately 14,000 sensitive questions relevant to the Russian domain across various fields of knowledge. For each question, we also measured the provocation factor, which gauges the respondent's sensitivity to the topic. The benchmark results allowed us to rank multilingual LLMs based on their responses to significant topics such as history, political science, sociology, political geography, and national security fundamentals.
-
-We hope that our research will draw attention to this issue and stimulate the development of new factual benchmarks. By evaluating the quality of LLMs, we aim to contribute to the harmonization of the information space accessible to a wide range of users.
-
 ## Contacts for cooperation
-If you have any questions, suggestions or are interested in cooperation, do not hesitate to contact us by email slava.ranepa@ya.ru
+If you have any questions, suggestions or are interested in cooperation, do not hesitate to contact us by email: polukoshko-mm@ranepa.ru
+
+## Capabilities of the repository
+
+This repository provides access to the SLAVA dataset, an open dataset of questions specifically designed to evaluate the factual accuracy of large language models (LLMs) in the Russian context. Researchers and developers can download the dataset to validate their models, testing their performance on a wide range of sociopolitical topics relevant to Russia. Additionally, the repository offers functionality to compute various metrics, enabling users to assess their models' accuracy and performance in generating factually correct answers. The results are displayed in a leaderboard format, allowing for easy comparison of different models.
 
 ## Installation
 
