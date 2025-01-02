@@ -51,6 +51,9 @@ coverage.xml
 .pytest_cache/
 cover/
 
+# notebooks
+slava/notebooks/*
+
 # Translations
 *.mo
 *.pot
