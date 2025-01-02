@@ -1,7 +1,13 @@
 import anthropic
 from langchain_core.messages import HumanMessage
 
-from slava.config import CLAUDE_MODEL_MAX_TOKENS, CLAUDE_MODEL_NAME, TEXT_COLUMN
+from slava.config import (
+    CLAUDE_MODEL_MAX_TOKENS,
+    CLAUDE_MODEL_NAME,
+    CLAUDE_MODEL_TEMPERATURE,
+    CLAUDE_MODEL_TOP_K,
+    TEXT_COLUMN,
+)
 
 
 class ClaudeModel:
@@ -21,6 +27,8 @@ class ClaudeModel:
 
                 message = self.client.messages.create(
                     model=CLAUDE_MODEL_NAME,
+                    temperature=CLAUDE_MODEL_TEMPERATURE,
+                    top_k=CLAUDE_MODEL_TOP_K,
                     max_tokens=CLAUDE_MODEL_MAX_TOKENS,
                     messages=[{"role": "user", "content": prompt}],
                 )

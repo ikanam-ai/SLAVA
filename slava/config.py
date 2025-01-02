@@ -127,36 +127,41 @@ DEVICE: Final[int] = 0
 
 # ClaudeModel
 CLAUDE_MODEL_NAME: Final[str] = "claude-3-5-sonnet-20240620"
-CLAUDE_MODEL_MAX_TOKENS: Final[int] = 150
+CLAUDE_MODEL_TEMPERATURE: Final[float] = 0.0
+CLAUDE_MODEL_TOP_K: Final[int] = 1
+CLAUDE_MODEL_MAX_TOKENS: Final[int] = 25
 
 # GeminiModel
 GEMINI_MODEL_NAME: Final[str] = "gemini-1.5-flash"
 
 # GigaChatModel
 GIGACHAT_MODEL_SCOPE: Final[str] = "GIGACHAT_API_PERS"
+GIGACHAT_MODEL_TEMPERATURE: Final[float] = 0.0
+GIGACHAT_MODEL_TOP_K: Final[int] = 1
+GIGACHAT_MODEL_MAX_TOKENS: Final[int] = 25
 
 # HuggingFaceModel
-HUGGINGFACE_MODEL_MAX_TOKENS: Final[int] = 50
-HUGGINGFACE_MODEL_TOP_K: Final[int] = 50
-HUGGINGFACE_MODEL_TEMPERATURE: Final[float] = 1.0
+HUGGINGFACE_MODEL_TEMPERATURE: Final[float] = 0.0
+HUGGINGFACE_MODEL_TOP_K: Final[int] = 1
+HUGGINGFACE_MODEL_MAX_TOKENS: Final[int] = 25
 
 # OllamaModel
-OLLAMA_MODEL_NUM_CTX: Final[int] = 128
-OLLAMA_MODEL_TEMPERATURE: Final[float] = 1.0
-OLLAMA_MODEL_TOP_K: Final[int] = 50
-OLLAMA_MODEL_MAX_TOKENS: Final[int] = 100
+OLLAMA_MODEL_TEMPERATURE: Final[float] = 0.0
+OLLAMA_MODEL_TOP_K: Final[int] = 1
+OLLAMA_MODEL_MAX_TOKENS: Final[int] = 25
 
 # OpenAIModel
 OPENAI_MODEL_NAME: Final[str] = "gpt-4o"
-OPENAI_MODEL_MAX_TOKENS: Final[int] = 150
-OPENAI_MODEL_TEMPERATURE: Final[float] = 0.7
+OPENAI_MODEL_TEMPERATURE: Final[float] = 0.0
+OPENAI_MODEL_MAX_TOKENS: Final[int] = 25
+
 
 # YandexGPTModel
 YANDEXGPT_URL: Final[str] = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
 YANDEXGPT_MODEL_URI: Final[str] = "gpt://{}/yandexgpt"
 YANDEXGPT_STREAM: Final[bool] = False
 YANDEXGPT_TEMPERATURE: Final[float] = 0.0
-YANDEXGPT_MAXTOKENS: Final[str] = "200"
+YANDEXGPT_MAXTOKENS: Final[str] = "25"
 
 # ModelEval
 PROMPT_INSTRUCTION: Final[str] = (
