@@ -53,6 +53,8 @@ cover/
 
 # notebooks
 slava/notebooks/*
+slava/notebooks/model_eval.ipynb
+
 
 # Translations
 *.mo
