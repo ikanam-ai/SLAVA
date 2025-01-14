@@ -7,7 +7,11 @@ from slava.config import GEMINI_MODEL_NAME, TEXT_COLUMN
 class GeminiModel:
     def __init__(self, api_key: str):
         genai.configure(api_key=api_key)
-        self.model = self.Model(genai.GenerativeModel(GEMINI_MODEL_NAME))
+        self.model = self.Model(
+            genai.GenerativeModel(
+                GEMINI_MODEL_NAME,
+            )
+        )
 
     class Model:
         def __init__(self, model):
