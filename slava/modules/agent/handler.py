@@ -6,8 +6,8 @@ from requests.auth import _basic_auth_str
 from slava.config import MAX_LEN_USER_PROMPT
 from slava.modules.agent.assistant_graph import AGORAAssistant
 from slava.modules.agent.base import BaseHandler
-from slava.modules.agent.protection import ExceedingProtector, ProtectionStatus, ProtectorsAccumulator
 from slava.modules.agent.runnables import create_agora_runnables_ollama
+from slava.modules.agent.safe import LengthLimitProtector, ProtectionResult, ProtectionStatus, ProtectorAccumulator
 
 
 class AGORAOptions(BaseModel):
@@ -23,10 +23,10 @@ class AGORAHandler(BaseHandler):
             headers={"Authorization": _basic_auth_str("admin", "password")},
         )
         self._checkpointer_db_uri = options.psycopg_checkpointer
-        self._protector = ProtectorsAccumulator(protectors=[ExceedingProtector(max_len=MAX_LEN_USER_PROMPT)])
+        self._protector = ProtectorAccumulator(protectors=[LengthLimitProtector(max_len=MAX_LEN_USER_PROMPT)])
 
     async def ahandle_prompt(self, prompt: str, chat_id: str) -> str:
-        protector_res = self._protector.check(prompt)
+        protector_res = self._protector.validate(prompt)
         if protector_res.status is not ProtectionStatus.ok:
             return protector_res.message
 
