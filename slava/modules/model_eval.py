@@ -84,3 +84,4 @@ class ModelEval:
 
         pd.DataFrame(self.results).to_csv(results_filepath, index=False, encoding="utf-8")
         logging.info(f"Results saved to {results_filepath}")
+        return results_filepath

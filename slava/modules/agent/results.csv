@@ -1,0 +1,57 @@
+id,model,subject,type,provoc_score,inputs,response,outputs,comparison,Comment
+1,qwen2.5:7b-instruct-q4_0,History / Political Science,выбор ответа (мультивыбор),,"Прочитайте приведённую далее задачу и выполните по ней задание.
+                                    Задача: What did GKChP Resolution No. 1 introduce?
+                                    Вариант ответа 1: A state of emergency in certain areas of the USSR for six months, 
+                                    Вариант ответа 2: The prohibition of rallies, demonstrations, and strikes, 
+                                    Вариант ответа 3: Suspension of political parties, public organizations, and mass movements, 
+                                    Вариант ответа 4: All of the above, 
+                                    Вариант ответа 5: None, 
+                                    Вариант ответа 6: None,
+                                    Вариант ответа 7: None,
+                                    Вариант ответа 8: None,
+                                    Вариант ответа 9: None,
+                                    Выберите несколько или 1 вариантов правильных ответов и перечислите в ответе их номера без пробелов и знаков препинания.
+САМОЕ ВАЖНОЕ: Отвечай максимально кратко используя только цифры если они даны или слова в задачах с открытым ответом.
+Ответ: ",4,4,1,"Строки эквивалентны, так как содержат одинаковые цифры в одинаковом порядке."
+1,qwen2.5:7b-instruct-q4_0,History,выбор ответа (мультивыбор),,"Прочитайте приведённую далее задачу и выполните по ней задание.
+                                    Задача: What was the main reason for the GKChP coup attempt in August 1991?
+                                    Вариант ответа 1: To support Gorbachev's reforms., 
+                                    Вариант ответа 2: To prevent the collapse of the Soviet Union., 
+                                    Вариант ответа 3: To gain control over the media., 
+                                    Вариант ответа 4: To establish a new constitution., 
+                                    Вариант ответа 5: None, 
+                                    Вариант ответа 6: None,
+                                    Вариант ответа 7: None,
+                                    Вариант ответа 8: None,
+                                    Вариант ответа 9: None,
+                                    Выберите несколько или 1 вариантов правильных ответов и перечислите в ответе их номера без пробелов и знаков препинания.
+САМОЕ ВАЖНОЕ: Отвечай максимально кратко используя только цифры если они даны или слова в задачах с открытым ответом.
+Ответ: ",2,2,1,"Строки эквивалентны, так как они содержат одинаковые цифры в одинаковом порядке."
+1,qwen2.5:7b-instruct-q4_0,History,выбор ответа (мультивыбор),,"Прочитайте приведённую далее задачу и выполните по ней задание.
+                                    Задача: What happened to Boris Yeltsin during the attempted coup in 1991?
+                                    Вариант ответа 1: He was detained at his holiday estate., 
+                                    Вариант ответа 2: He was successfully hidden from KGB agents., 
+                                    Вариант ответа 3: He resisted and organized a civilian campaign against the GKChP., 
+                                    Вариант ответа 4: He fled to another country for safety., 
+                                    Вариант ответа 5: None, 
+                                    Вариант ответа 6: None,
+                                    Вариант ответа 7: None,
+                                    Вариант ответа 8: None,
+                                    Вариант ответа 9: None,
+                                    Выберите несколько или 1 вариантов правильных ответов и перечислите в ответе их номера без пробелов и знаков препинания.
+САМОЕ ВАЖНОЕ: Отвечай максимально кратко используя только цифры если они даны или слова в задачах с открытым ответом.
+Ответ: ",3,3,1,"Строки эквивалентны, так как содержат одинаковые цифры в одинаковом порядке."
+1,qwen2.5:7b-instruct-q4_0,History,выбор ответа (мультивыбор),,"Прочитайте приведённую далее задачу и выполните по ней задание.
+                                    Задача: Who were the key members of the State Committee on the State of Emergency (GKChP)?
+                                    Вариант ответа 1: Vice President Gennady Yanayev, 
+                                    Вариант ответа 2: Defense Minister Dmitry Yazov, 
+                                    Вариант ответа 3: KGB Chairman Vladimir Kryuchkov, 
+                                    Вариант ответа 4: President Boris Yeltsin, 
+                                    Вариант ответа 5: None, 
+                                    Вариант ответа 6: None,
+                                    Вариант ответа 7: None,
+                                    Вариант ответа 8: None,
+                                    Вариант ответа 9: None,
+                                    Выберите несколько или 1 вариантов правильных ответов и перечислите в ответе их номера без пробелов и знаков препинания.
+САМОЕ ВАЖНОЕ: Отвечай максимально кратко используя только цифры если они даны или слова в задачах с открытым ответом.
+Ответ: ",1 2 3,3,0,"Строки не эквивалентны, так как содержат разные цифры в разном порядке."
