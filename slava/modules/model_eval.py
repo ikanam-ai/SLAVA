@@ -1,4 +1,5 @@
 import logging
+import os
 
 import pandas as pd
 from tqdm import tqdm
@@ -29,7 +30,7 @@ class ModelEval:
     def __init__(
         self,
     ):
-        self.results = []
+        pass
 
     @staticmethod
     def _extract_values(row: pd.Series):
@@ -64,12 +65,17 @@ class ModelEval:
         model_name: str,
         dataset: pd.DataFrame,
         model_handler: ModelHandler,
-        results_filepath: str = RESULTS_FILEPATH,
+        folder_path: str = RESULTS_FILEPATH,
     ) -> None:
+        safe_model_name = model_name.replace("/", "-")
+        results_filepath = os.path.join(folder_path, f"{safe_model_name}.csv")
+        os.makedirs(os.path.dirname(results_filepath), exist_ok=True)
+
+        results = []
         for _, row in tqdm(dataset.iterrows(), total=dataset.shape[0]):
             prompt = self.fill_instruction(row)
             response = model_handler.generate_response(prompt)
-            self.results.append(
+            results.append(
                 {
                     ID_COLUMN: row[ID_COLUMN],
                     MODEL_COLUMN: model_name,
@@ -82,5 +88,5 @@ class ModelEval:
                 }
             )
 
-        pd.DataFrame(self.results).to_csv(results_filepath, index=False, encoding="utf-8")
+        pd.DataFrame(results).to_csv(results_filepath, index=False, encoding="utf-8")
         logging.info(f"Results saved to {results_filepath}")

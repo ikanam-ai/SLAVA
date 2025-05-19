@@ -1,4 +1,4 @@
-from typing import Final
+from typing import Final, List
 
 # Questions Dataset
 QUESTIONS_DATASET_COLUMNS: Final[list[str]] = [
@@ -167,4 +167,141 @@ YANDEXGPT_MAXTOKENS: Final[str] = "25"
 PROMPT_INSTRUCTION: Final[str] = (
     "\nСАМОЕ ВАЖНОЕ: Отвечай максимально кратко используя только цифры если они даны или слова в задачах с открытым ответом.\nОтвет: "
 )
-RESULTS_FILEPATH: Final[str] = "results.csv"
+RESULTS_FILEPATH: Final[str] = "results"
+
+# Metrics Table
+
+# ---------------------------
+# Словарь переименования колонок
+# ---------------------------
+COLUMN_RENAME_MAP: dict[str, str] = {
+    # Переименовываем колонки метрик по области знаний:
+    "Not open Subject Geography EM": "GEO_num_q_EM",
+    "Not open Subject Geography IS": "GEO_num_q_CC",
+    "Not open Subject Geography PM": "GEO_num_q_PM",
+    "Open Subject Geography EM": "GEO_open_q_EM",
+    "Open Subject Geography F1": "GEO_open_q_F1",
+    "Open Subject Geography LR": "GEO_open_q_LR",
+    "Not open Subject History EM": "HIST_num_q_EM",
+    "Not open Subject History IS": "HIST_num_q_CC",
+    "Not open Subject History PM": "HIST_num_q_PM",
+    "Open Subject History EM": "HIST_open_q_EM",
+    "Open Subject History F1": "HIST_open_q_F1",
+    "Open Subject History LR": "HIST_open_q_LR",
+    "Not open Subject Social studies EM": "SOC_num_q_EM",
+    "Not open Subject Social studies IS": "SOC_num_q_CC",
+    "Not open Subject Social studies PM": "SOC_num_q_PM",
+    "Open Subject Social studies EM": "SOC_open_q_EM",
+    "Open Subject Social studies F1": "SOC_open_q_F1",
+    "Open Subject Social studies LR": "SOC_open_q_LR",
+    "Not open Subject Political science EM": "POL_num_q_EM",
+    "Not open Subject Political science IS": "POL_num_q_CC",
+    "Not open Subject Political science PM": "POL_num_q_PM",
+    # Переименовываем колонки метрик по виду вопроса:
+    "Not open Type of question Multiple choice EM": "NUM_Q_multich_EM",
+    "Not open Type of question Multiple choice IS": "NUM_Q_multich_CC",
+    "Not open Type of question Multiple choice PM": "NUM_Q_multich_PM",
+    "Not open Type of question Single choice EM": "NUM_Q_onech_EM",
+    "Not open Type of question Single choice IS": "NUM_Q_onech_CC",
+    "Not open Type of question Single choice PM": "NUM_Q_onech_PM",
+    "Not open Type of question Sequence EM": "NUM_Q_seq_EM",
+    "Not open Type of question Sequence IS": "NUM_Q_seq_CC",
+    "Not open Type of question Sequence PM": "NUM_Q_seq_PM",
+    "Not open Type of question Matching EM": "NUM_Q_map_EM",
+    "Not open Type of question Matching IS": "NUM_Q_map_CC",
+    "Not open Type of question Matching PM": "NUM_Q_map_PM",
+    "Open Type of question Open answer EM": "OPEN_Q_EM",
+    "Open Type of question Open answer F1": "OPEN_Q_F1",
+    "Open Type of question Open answer LR": "OPEN_Q_LR",
+    # Переименовываем колонки метрик по уровню провокативности:
+    "Not open Provocativeness Low EM": "PROVOC_1_num_q_EM",
+    "Not open Provocativeness Low IS": "PROVOC_1_num_q_CC",
+    "Not open Provocativeness Low PM": "PROVOC_1_num_q_PM",
+    "Open Provocativeness Low EM": "PROVOC_1_open_q_EM",
+    "Open Provocativeness Low F1": "PROVOC_1_open_q_F1",
+    "Open Provocativeness Low LR": "PROVOC_1_open_q_LR",
+    "Not open Provocativeness Medium EM": "PROVOC_2_num_q_EM",
+    "Not open Provocativeness Medium IS": "PROVOC_2_num_q_CC",
+    "Not open Provocativeness Medium PM": "PROVOC_2_num_q_PM",
+    "Open Provocativeness Medium EM": "PROVOC_2_open_q_EM",
+    "Open Provocativeness Medium F1": "PROVOC_2_open_q_F1",
+    "Open Provocativeness Medium LR": "PROVOC_2_open_q_LR",
+    "Not open Provocativeness High EM": "PROVOC_3_num_q_EM",
+    "Not open Provocativeness High IS": "PROVOC_3_num_q_CC",
+    "Not open Provocativeness High PM": "PROVOC_3_num_q_PM",
+    "Open Provocativeness High EM": "PROVOC_3_open_q_EM",
+    "Open Provocativeness High F1": "PROVOC_3_open_q_F1",
+    "Open Provocativeness High LR": "PROVOC_3_open_q_LR",
+}
+
+# ---------------------------
+# Константы для группировки колонок (уже с новыми именами)
+# ---------------------------
+# Вкладка "Subject"
+GEO_COLS: List[str] = [
+    "GEO_num_q_EM",
+    "GEO_num_q_CC",
+    "GEO_num_q_PM",
+    "GEO_open_q_EM",
+    "GEO_open_q_F1",
+    "GEO_open_q_LR",
+]
+
+HISTORY_COLS: List[str] = [
+    "HIST_num_q_EM",
+    "HIST_num_q_CC",
+    "HIST_num_q_PM",
+    "HIST_open_q_EM",
+    "HIST_open_q_F1",
+    "HIST_open_q_LR",
+]
+
+SOCIAL_COLS: List[str] = [
+    "SOC_num_q_EM",
+    "SOC_num_q_CC",
+    "SOC_num_q_PM",
+    "SOC_open_q_EM",
+    "SOC_open_q_F1",
+    "SOC_open_q_LR",
+]
+
+POL_COLS: List[str] = ["POL_num_q_EM", "POL_num_q_CC", "POL_num_q_PM"]
+
+# Вкладка "Type of question"
+MULTICH_COLS: List[str] = ["NUM_Q_multich_EM", "NUM_Q_multich_CC", "NUM_Q_multich_PM"]
+
+ONECH_COLS: List[str] = ["NUM_Q_onech_EM", "NUM_Q_onech_CC", "NUM_Q_onech_PM"]
+
+SEQ_COLS: List[str] = ["NUM_Q_seq_EM", "NUM_Q_seq_CC", "NUM_Q_seq_PM"]
+
+MAP_COLS: List[str] = ["NUM_Q_map_EM", "NUM_Q_map_CC", "NUM_Q_map_PM"]
+
+OPEN_COLS: List[str] = ["OPEN_Q_EM", "OPEN_Q_F1", "OPEN_Q_LR"]
+
+# Вкладка "Provocativeness"
+PROVOC_LOW_COLS: List[str] = [
+    "PROVOC_1_num_q_EM",
+    "PROVOC_1_num_q_CC",
+    "PROVOC_1_num_q_PM",
+    "PROVOC_1_open_q_EM",
+    "PROVOC_1_open_q_F1",
+    "PROVOC_1_open_q_LR",
+]
+
+PROVOC_MED_COLS: List[str] = [
+    "PROVOC_2_num_q_EM",
+    "PROVOC_2_num_q_CC",
+    "PROVOC_2_num_q_PM",
+    "PROVOC_2_open_q_EM",
+    "PROVOC_2_open_q_F1",
+    "PROVOC_2_open_q_LR",
+]
+
+PROVOC_HIGH_COLS: List[str] = [
+    "PROVOC_3_num_q_EM",
+    "PROVOC_3_num_q_CC",
+    "PROVOC_3_num_q_PM",
+    "PROVOC_3_open_q_EM",
+    "PROVOC_3_open_q_F1",
+    "PROVOC_3_open_q_LR",
+]

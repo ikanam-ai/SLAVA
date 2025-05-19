@@ -1,3 +1,4 @@
+import os
 from typing import List, Union
 
 import pandas as pd
@@ -15,6 +16,7 @@ from slava.config import (
     PARTIALLY_MATCH_COLUMN,
     PROVOC_SCORE_COLUMN,
     REAL_ANSWER_COLUMN,
+    RESULTS_FILEPATH,
     SUBJECT_COLUMN,
     TYPE_COLUMN,
 )
@@ -83,3 +85,15 @@ def create_pivot_table(
     ]
 
     return combined_pivot.reset_index()
+
+
+def get_results(results_filepath: str = RESULTS_FILEPATH) -> pd.DataFrame:
+    paths = [os.path.join(results_filepath, f) for f in os.listdir(results_filepath) if f.endswith(".csv")]
+
+    evaluations = []
+    for path in paths:
+        evaluation = pd.read_csv(path)
+        evaluations.append(evaluation)
+
+    results = pd.concat(evaluations, ignore_index=True)
+    return results
