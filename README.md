@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1"><img src="extensions/views/logo_eng.png" alt="SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis"></a>
+  <a href="https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1"><img src="extensions/views/logo_eng.png" width="512" alt="SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis"></a>
 </div align="center">
 
 # SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis
@@ -10,7 +10,7 @@
   </a>
 
   <a href="https://huggingface.co/spaces/RANEPA-ai/SLAVA">
-    <img src="https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md.svg" height="28" alt="Open in HF Spaces">
+    <img src="https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md.svg" height="20" alt="Open in HF Spaces">
   </a>
 
   <a href="https://deepwiki.com/ikanam-ai/SLAVA">
