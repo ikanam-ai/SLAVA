@@ -3,6 +3,21 @@
 </div align="center">
 
 # SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis
+<div align="center">
+
+  <a href="https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1">
+    <img src="https://img.shields.io/badge/Hugging%20Face-Dataset-orange?logo=huggingface" height="28" alt="HF Dataset">
+  </a>
+
+  <a href="https://huggingface.co/spaces/RANEPA-ai/SLAVA">
+    <img src="https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-md.svg" height="28" alt="Open in HF Spaces">
+  </a>
+
+  <a href="https://deepwiki.com/ikanam-ai/SLAVA">
+    <img src="https://deepwiki.com/badge.svg" height="28" alt="Ask DeepWiki">
+  </a>
+
+</div>
 
 [SLAVA](https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1) is a benchmark designed to evaluate the factual accuracy of large language models (LLMs) specifically within the Russian domain. 
 
