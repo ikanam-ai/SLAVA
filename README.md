@@ -2,7 +2,6 @@
   <a href="https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1"><img src="extensions/views/logo_eng.png" width="480" alt="SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis"></a>
 </div align="center">
 
-# SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis
 <div align="center">
 
   <a href="https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1">
@@ -19,6 +18,7 @@
 
 </div>
 
+# SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis
 [SLAVA](https://huggingface.co/datasets/RANEPA-ai/SLAVA-OpenData-2800-v1) is a benchmark designed to evaluate the factual accuracy of large language models (LLMs) specifically within the Russian domain. 
 
 Large Language Models (LLMs) are increasingly applied across various fields due to their advancing capabilities in numerous natural language processing tasks. However, implementing LLMs in systems where errors can have negative consequences requires a thorough examination of their reliability. Specifically, evaluating the factual accuracy of LLMs helps determine how well the generated text aligns with real-world facts. Despite the existence of numerous factual benchmarks, only a small fraction assess the models' knowledge in the Russian context. Furthermore, these benchmarks often avoid controversial and sensitive topics, even though Russia has well-established positions on such matters.
