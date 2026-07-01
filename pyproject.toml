@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "slava"
 version = "0.1.0"
-description = ""
+description = "SLAVA: Benchmark of Sociopolitical Landscape and Value Analysis"
 authors = ["Rinat Sharafetdinov <rinat.sharafetdinov42@gmail.com>"]
 readme = "README.md"
 
@@ -20,6 +20,8 @@ gigachat = "^0.1.35"
 google-generativeai = "^0.8.3"
 openai = "^1.53.0"
 anthropic = "^0.37.1"
+pymongo = "^4.15.3"
+matplotlib = "^3.10.7"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.8.0"

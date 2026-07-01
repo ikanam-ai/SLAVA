@@ -9,11 +9,11 @@ class OllamaModel:
         model_name,
         temperature: float = OLLAMA_MODEL_TEMPERATURE,
         top_k: int = OLLAMA_MODEL_TOP_K,
-        max_tokens: int = OLLAMA_MODEL_MAX_TOKENS,
+        num_predict: int = OLLAMA_MODEL_MAX_TOKENS,
     ):
         self.model = OllamaLLM(
             model=model_name,
             temperature=temperature,
             top_k=top_k,
-            max_tokens=max_tokens,
+            num_predict=num_predict,
         )

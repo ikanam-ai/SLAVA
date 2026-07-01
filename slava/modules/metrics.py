@@ -17,8 +17,17 @@ class MetricsCalculator:
     def __init__(self, data: pd.DataFrame):
         self.open_questions, self.not_open_questions = preprocess_answers(data)
 
-        self.__calculate_metrics_for_open_questions()
-        self.__calculate_metrics_for_not_open_questions()
+        self.open_questions = self.open_questions if self.open_questions is not None else pd.DataFrame()
+        self.not_open_questions = self.not_open_questions if self.not_open_questions is not None else pd.DataFrame()
+
+        self.open_metrics = None
+        self.not_open_metrics = None
+
+        if not self.open_questions.empty:
+            self.open_metrics = self.__calculate_metrics_for_open_questions()
+
+        if not self.not_open_questions.empty:
+            self.not_open_metrics = self.__calculate_metrics_for_not_open_questions()
 
     def __calculate_metrics_for_open_questions(self):
         self.open_questions = exact_match(self.open_questions)
