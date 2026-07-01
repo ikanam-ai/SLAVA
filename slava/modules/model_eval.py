@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 
 import pandas as pd
 from tqdm import tqdm
@@ -43,7 +44,7 @@ class ModelEval:
             option_key = OPTION_SUBCOLUMN_TEMPLATE.format(i)
             values[f"Option_{i}"] = row[INPUTS_COLUMN][OPTIONS_COLUMN].get(option_key, "")
 
-        values = {k: v for k, v in values.items() if pd.notna(v) and v != ""}
+        values = {k: v for k, v in values.items()}
 
         return values
 
@@ -52,11 +53,7 @@ class ModelEval:
 
         values = self._extract_values(row)
 
-        try:
-            filled_instruction = instruction_template.format(**values) + prompt_instruction
-        except KeyError as e:
-            logging.info(f"Substitution error: missing key {e}")
-            filled_instruction = "Ошибка: отсутствует необходимая информация для формирования запроса."
+        filled_instruction = instruction_template.format(**values) + prompt_instruction
 
         return filled_instruction
 
@@ -71,10 +68,40 @@ class ModelEval:
         results_filepath = os.path.join(folder_path, f"{safe_model_name}.csv")
         os.makedirs(os.path.dirname(results_filepath), exist_ok=True)
 
+        MAX_RETRIES = 3
+        BASE_DELAY_SEC = 2.0
+
         results = []
         for _, row in tqdm(dataset.iterrows(), total=dataset.shape[0]):
             prompt = self.fill_instruction(row)
-            response = model_handler.generate_response(prompt)
+
+            response = None
+            last_error = None
+
+            for attempt in range(1, MAX_RETRIES + 1):
+                try:
+                    response = model_handler.generate_response(prompt)
+                    break
+                except Exception as e:
+                    last_error = e
+                    logging.warning(
+                        "Error while calling model '%s' for id=%s (attempt %d/%d): %r",
+                        model_name,
+                        row.get(ID_COLUMN, "N/A"),
+                        attempt,
+                        MAX_RETRIES,
+                        e,
+                    )
+                    if attempt < MAX_RETRIES:
+                        delay = BASE_DELAY_SEC * attempt
+                        time.sleep(delay)
+
+            if response is None:
+                # если после всех ретраев так и не получилось — пишем ошибку в ответ
+                response_text = f"[ERROR AFTER {MAX_RETRIES} RETRIES: {last_error}]"
+            else:
+                response_text = response.strip()
+
             results.append(
                 {
                     ID_COLUMN: row[ID_COLUMN],
@@ -83,7 +110,7 @@ class ModelEval:
                     TYPE_COLUMN: row[META_COLUMN][TYPE_COLUMN],
                     PROVOC_SCORE_COLUMN: row[META_COLUMN][PROVOC_SCORE_COLUMN],
                     INPUTS_COLUMN: prompt,
-                    MODEL_ANSWER_COLUMN: response.strip(),
+                    MODEL_ANSWER_COLUMN: response_text,
                     REAL_ANSWER_COLUMN: row[REAL_ANSWER_COLUMN],
                 }
             )

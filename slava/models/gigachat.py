@@ -24,5 +24,5 @@ class GigaChatModel:
             model=model_name,
             temperature=temperature,
             max_tokens=max_tokens,
-            top_k=top_k,
+            verify_ssl_certs=False,
         )
