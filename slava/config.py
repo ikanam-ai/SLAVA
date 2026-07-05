@@ -146,9 +146,23 @@ HUGGINGFACE_MODEL_TOP_K: Final[int] = 1
 HUGGINGFACE_MODEL_MAX_TOKENS: Final[int] = 25
 
 # OllamaModel
+OLLAMA_BASE_URL: Final[str] = "http://127.0.0.1:11434"
 OLLAMA_MODEL_TEMPERATURE: Final[float] = 0.0
 OLLAMA_MODEL_TOP_K: Final[int] = 1
-OLLAMA_MODEL_MAX_TOKENS: Final[int] = 25
+# 25 tokens is too small for SLAVA open answers and may truncate reasoning/final answer.
+OLLAMA_MODEL_MAX_TOKENS: Final[int] = 512
+OLLAMA_MODEL_NUM_CTX: Final[int] = 8192
+OLLAMA_MODEL_TIMEOUT_SEC: Final[int] = 900
+# False asks newer Ollama versions to suppress separate thinking output.
+# Older Ollama versions may ignore/reject it; ollama.py automatically retries without this field.
+OLLAMA_MODEL_THINK: Final[bool] = False
+OLLAMA_SYSTEM_PROMPT: Final[str] = (
+    "Отвечай только финальным ответом. "
+    "Не выводи ход рассуждений, объяснения, анализ или промежуточные шаги. "
+    "Не используй Markdown. "
+    "Если это задание с выбором ответа, верни только номер/цифры ответа. "
+    "Если это открытый вопрос, верни только краткий ответ."
+)
 
 # OpenAIModel
 OPENAI_MODEL_NAME: Final[str] = "gpt-4o"
