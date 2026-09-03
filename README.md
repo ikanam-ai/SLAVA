@@ -96,6 +96,32 @@ This repository provides access to the SLAVA dataset, an open dataset of questio
 ```
 
 
+## OS model inference with vLLM
+
+The primary runner for the 10 open-source models is
+`code/SLAVA/eval_os_models.py` and uses vLLM. Install the optional GPU group
+through Poetry:
+
+```bash
+poetry install --with vllm
+```
+
+Run a no-download validation first:
+
+```bash
+poetry run python code/SLAVA/eval_os_models.py \
+  --models-table "code/SLAVA/Model Tables/Таблица моделей для SLAVA (03.07.2026).xlsx" \
+  --dataset-path "code/SLAVA/Datasets/SLAVA/jsonl/full_slava_dataset.jsonl" \
+  --output-dir "code/SLAVA/runs/vllm_full/dry_run" \
+  --dry-run
+```
+
+The full v1/v2 workflow and resume commands are documented in
+[`code/SLAVA/VLLM_RUN.md`](code/SLAVA/VLLM_RUN.md). Python 3.10–3.13 is
+supported for the vLLM environment. The old Ollama runner remains available as
+`code/SLAVA/eval_ollama_models.py`.
+
+
 ## Licensing Information
 
 #### ⚖ MIT license
